@@ -46,6 +46,7 @@ This will:
 ## Output
 
 - `overlap_results.csv`: Overlap information
+-  `GPCR_output.csv`: Overlap information for GPCR-related genes
 - `gene_coordinates_with_group_name.tsv`: Gene coordinates
 - `gene_errors.log`: Any errors encountered during execution
 
