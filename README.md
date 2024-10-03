@@ -20,6 +20,8 @@ This tool performs two main functions:
 - Python 3
 - Required packages: `pandas`, `requests`, `tqdm`
 
+```pip3 install pandas tqdm requests```
+
 ## Installation
 
 ```bash
