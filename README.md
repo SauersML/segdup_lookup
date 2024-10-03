@@ -53,18 +53,6 @@ The script:
 - `gene_coordinates_with_group_name.tsv`: The list of gene coordinates used in the analysis.
 - `gene_errors.log`: Logs any errors encountered during the process.
 
-## Explanation of Overlap Matches
-
-### Direct Match:
-A **direct match** occurs when a gene physically overlaps a duplication region **on the same chromosome**.
-
-### Indirect Match:
-A **non-direct (indirect) match** occurs if:
-- The gene overlaps a duplication on **a different chromosome**
-- The gene overlaps a duplication on the **same chromosome** but in a **different, non-overlapping region**.
-
-For **indirect matches**, the reported overlap percentage may refer to how much of the gene would overlap with the duplicated region, but it does not indicate a physical overlap on the gene's region.
-
 ## Data Sources
 
 - **Segmental duplications**: [UCSC GenomicSuperDups](https://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/genomicSuperDups.txt.gz)
@@ -72,4 +60,4 @@ For **indirect matches**, the reported overlap percentage may refer to how much 
 - **Gene coordinates**: [Ensembl REST API](https://rest.ensembl.org/lookup/id/{ensembl_id}?content-type=application/json)
 
 ## Notes
-- This tool is untested, still under development, and may contain bugs.
+- This tool is untested, still under development, and may (likely does) contain bugs.
