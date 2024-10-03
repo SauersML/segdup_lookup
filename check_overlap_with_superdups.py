@@ -65,13 +65,16 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
             other_start = dup_row['otherStart']
             other_end = dup_row['otherEnd']
             
-            # Check overlap with primary region
+            # Check overlap with primary region (direct match if on the same chromosome)
             if is_overlap(gene_start, gene_end, dup_start, dup_end):
                 overlap_len = overlap_size(gene_start, gene_end, dup_start, dup_end)
                 overlap_region = f"{max(gene_start, dup_start)}-{min(gene_end, dup_end)}"
                 gene_length = gene_end - gene_start
                 overlap_percentage = (overlap_len / gene_length) * 100
                 overlap_type = "Primary"
+                
+                # Direct match if overlap occurs on the same chromosome (Primary)
+                direct_match = "Yes" if gene_chrom == f"{dup_row['chrom'][3:]}" else "No"
                 
                 total_matches += 1
                 overlap_results.append({
@@ -88,7 +91,7 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                     "Gene Length": gene_length,
                     "Overlap Percentage": overlap_percentage,
                     "Overlap Type": overlap_type,
-                    "Direct Match": "Yes"  # Primary region means direct match
+                    "Direct Match": direct_match  # Is this a direct match based on chromosome?
                 })
         
             # Check overlap with otherChrom region
@@ -98,6 +101,9 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                 gene_length = gene_end - gene_start
                 overlap_percentage = (overlap_len / gene_length) * 100
                 overlap_type = "Other"
+                
+                # Direct match if overlap occurs on the same chromosome (OtherChrom)
+                direct_match = "Yes" if gene_chrom == f"{dup_row['otherChrom'][3:]}" else "No"
                 
                 total_matches += 1
                 overlap_results.append({
@@ -114,7 +120,7 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                     "Gene Length": gene_length,
                     "Overlap Percentage": overlap_percentage,
                     "Overlap Type": overlap_type,
-                    "Direct Match": "No"  # OtherChrom region means not a direct match.. for now
+                    "Direct Match": direct_match  # Is this a direct match based on chromosome?
                 })
 
                 # Print progress info for every 100 matches found
