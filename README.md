@@ -49,6 +49,11 @@ This will:
 - `gene_coordinates_with_group_name.tsv`: Gene coordinates
 - `gene_errors.log`: Any errors encountered during execution
 
+## Data sources
+Segmental duplications: https://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/genomicSuperDups.txt.gz
+Gene list: https://www.genenames.org/cgi-bin/genegroup/download?id=2054&type=branch
+Gene coordinates: https://rest.ensembl.org/lookup/id/{ensembl_id}?content-type=application/json
+
 ## Note
 
 This script is untested and may contain inaccuracies or bugs. If an overlap type is primary but also other, it will be classified as primary. The output file may have duplicates.
