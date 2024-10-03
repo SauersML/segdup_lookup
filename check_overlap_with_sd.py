@@ -1,7 +1,7 @@
 import pandas as pd
 from tqdm import tqdm
 
-def check_overlap_with_sd(gene_file, sd_file, save_output=True):
+def check_overlap_with_sd(sd_file, save_output=True):
     """
     Identifies overlaps between gene coordinates and segmental duplications (SDs).
 
@@ -14,6 +14,8 @@ def check_overlap_with_sd(gene_file, sd_file, save_output=True):
     - overlap_df (pd.DataFrame): DataFrame containing all overlap information.
     - gpcr_df (pd.DataFrame): DataFrame containing overlaps for GPCR-related genes.
     """
+
+    gene_file = "gene_coordinates_with_group_name.tsv"
 
     # Load gene coordinates
     print("Loading gene coordinates...")
