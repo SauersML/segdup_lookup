@@ -77,7 +77,12 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                 overlap_results.append({
                     "Gene": gene_name,
                     "Group Name": gene_group,
-                    "Chromosome of Gene": gene_chrom,
+                    "Gene Chromosome": gene_chrom,
+                    "Gene Start": gene_start,
+                    "Gene End": gene_end,
+                    "Duplication Chromosome": f"chr{gene_chrom}",
+                    "Duplication Start": dup_start,
+                    "Duplication End": dup_end,
                     "Overlap Region": overlap_region,
                     "Overlap Length": overlap_len,
                     "Gene Length": gene_length,
@@ -97,14 +102,18 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                 overlap_results.append({
                     "Gene": gene_name,
                     "Group Name": gene_group,
-                    "Chromosome of Gene": gene_chrom,
+                    "Gene Chromosome": gene_chrom,
+                    "Gene Start": gene_start,
+                    "Gene End": gene_end,
+                    "Duplication Chromosome": other_chrom,
+                    "Duplication Start": other_start,
+                    "Duplication End": other_end,
                     "Overlap Region": overlap_region,
                     "Overlap Length": overlap_len,
                     "Gene Length": gene_length,
                     "Overlap Percentage": overlap_percentage,
                     "Overlap Type": overlap_type
                 })
-
 
                 # Print progress info for every 100 matches found
                 if total_matches % 100 == 0:
@@ -134,7 +143,6 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
     else:
         print(overlap_df)
         print(gpcr_df)
- 
     
     return overlap_results
 
