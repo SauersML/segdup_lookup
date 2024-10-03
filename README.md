@@ -54,6 +54,7 @@ A direct match means that the gene overlaps the duplication region directly, eit
 
 A non-direct match occurs if the gene overlaps a duplication region that is on a different chromosome (e.g., otherChrom) but is linked by duplication. Even if a gene overlaps a duplication on the same chromosome, if the duplication is in a completely different region (not overlapping), it's not a direct match.
 
+For non-direct matches, the reported overlap region is not a true overlap on the gene’s own chromosome and region. Essentially, it is measuring the amount of overlap if the gene were on that other region.
 
 ## Data sources
 - Segmental duplications: https://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/genomicSuperDups.txt.gz
