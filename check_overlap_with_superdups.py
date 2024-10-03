@@ -87,7 +87,8 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                     "Overlap Length": overlap_len,
                     "Gene Length": gene_length,
                     "Overlap Percentage": overlap_percentage,
-                    "Overlap Type": overlap_type
+                    "Overlap Type": overlap_type,
+                    "Direct Match": "Yes"  # Primary region means direct match
                 })
         
             # Check overlap with otherChrom region
@@ -112,7 +113,8 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                     "Overlap Length": overlap_len,
                     "Gene Length": gene_length,
                     "Overlap Percentage": overlap_percentage,
-                    "Overlap Type": overlap_type
+                    "Overlap Type": overlap_type,
+                    "Direct Match": "No"  # OtherChrom region means not a direct match
                 })
 
                 # Print progress info for every 100 matches found
