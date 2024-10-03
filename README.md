@@ -50,6 +50,11 @@ This will:
 - `gene_coordinates_with_group_name.tsv`: Gene coordinates
 - `gene_errors.log`: Any errors encountered during execution
 
+A direct match means that the gene overlaps the duplication region directly, either on the primary duplication region or on the secondary (other) duplication region, but only if the gene's chromosome matches and the gene actually overlaps the coordinates of that region.
+
+A non-direct match occurs if the gene overlaps a duplication region that is on a different chromosome (e.g., otherChrom) but is linked by duplication. Even if a gene overlaps a duplication on the same chromosome, if the duplication is in a completely different region (not overlapping), it's not a direct match.
+
+
 ## Data sources
 - Segmental duplications: https://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/genomicSuperDups.txt.gz
 - Gene list: https://www.genenames.org/cgi-bin/genegroup/download?id=2054&type=branch
