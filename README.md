@@ -49,4 +49,4 @@ This will:
 
 ## Note
 
-This script is untested and may contain inaccuracies or bugs. If an overlap type is primary but also other, it will be classified as primary.
+This script is untested and may contain inaccuracies or bugs. If an overlap type is primary but also other, it will be classified as primary. The output file may have duplicates.
