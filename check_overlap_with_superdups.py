@@ -90,6 +90,7 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                 overlap_results.append({
                     "Gene": gene_name,
                     "Group Name": gene_group,
+                    "Chromosome of Gene": gene_chrom,
                     "Overlap Region": overlap_region,
                     "Overlap Length": overlap_len,
                     "Gene Length": gene_length,
