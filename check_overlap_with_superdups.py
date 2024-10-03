@@ -47,7 +47,7 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
     total_matches = 0
     print("Checking overlaps between gene coordinates and genomicSuperDups...")
 
-    # Use tqdm for real-time progress tracking
+    # tqdm for real-time progress tracking
     for _, gene_row in tqdm(genes_df.iterrows(), total=genes_df.shape[0], desc="Gene Progress"):
         gene_chrom = gene_row['Chromosome']
         gene_start = gene_row['Start']
@@ -66,26 +66,33 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
             other_end = dup_row['otherEnd']
             
             # Check overlap with primary region
-            matched = False
-            overlap_type = ""
             if is_overlap(gene_start, gene_end, dup_start, dup_end):
                 overlap_len = overlap_size(gene_start, gene_end, dup_start, dup_end)
                 overlap_region = f"{max(gene_start, dup_start)}-{min(gene_end, dup_end)}"
                 gene_length = gene_end - gene_start
                 overlap_percentage = (overlap_len / gene_length) * 100
                 overlap_type = "Primary"
-                matched = True
-  
+                
+                total_matches += 1
+                overlap_results.append({
+                    "Gene": gene_name,
+                    "Group Name": gene_group,
+                    "Chromosome of Gene": gene_chrom,
+                    "Overlap Region": overlap_region,
+                    "Overlap Length": overlap_len,
+                    "Gene Length": gene_length,
+                    "Overlap Percentage": overlap_percentage,
+                    "Overlap Type": overlap_type
+                })
+        
             # Check overlap with otherChrom region
-            elif is_overlap(gene_start, gene_end, other_start, other_end):
+            if is_overlap(gene_start, gene_end, other_start, other_end):
                 overlap_len = overlap_size(gene_start, gene_end, other_start, other_end)
                 overlap_region = f"{max(gene_start, other_start)}-{min(gene_end, other_end)}"
                 gene_length = gene_end - gene_start
                 overlap_percentage = (overlap_len / gene_length) * 100
                 overlap_type = "Other"
-                matched = True
-
-            if matched:
+                
                 total_matches += 1
                 overlap_results.append({
                     "Gene": gene_name,
@@ -98,18 +105,36 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
                     "Overlap Type": overlap_type
                 })
 
+
                 # Print progress info for every 100 matches found
                 if total_matches % 100 == 0:
                     print(f"Matches found: {total_matches}")
     
     print(f"Total matches found: {total_matches}")
 
+    overlap_df = pd.DataFrame(overlap_results)
+
+    # Remove exact duplicate rows
+    overlap_df = overlap_df.drop_duplicates()
+
+    # Create GPCR output: filter Group Name containing 'G protein' and sort by Overlap Percentage
+    gpcr_df = overlap_df[overlap_df['Group Name'].str.contains("G protein", case=False, na=False)]
+ 
+    # Sort by Overlap Percentage in descending order
+    gpcr_df = gpcr_df.sort_values(by="Overlap Percentage", ascending=False)
+                                        
     if save_output:
-        overlap_df = pd.DataFrame(overlap_results)
+        # Save the main output file
         overlap_df.to_csv("overlap_results.csv", index=False)
         print("Results saved to overlap_results.csv")
+                 
+        # Save the GPCR output file
+        gpcr_df.to_csv("GPCR_output.csv", index=False)
+        print("GPCR results saved to GPCR_output.csv")
     else:
-        print(pd.DataFrame(overlap_results))
+        print(overlap_df)
+        print(gpcr_df)
+ 
     
     return overlap_results
 
