@@ -65,7 +65,7 @@ def check_overlap_with_superdups(gene_file="gene_coordinates_with_group_name.tsv
             other_start = dup_row['otherStart']
             other_end = dup_row['otherEnd']
             
-            # Check overlap with primary region (direct match if on the same chromosome)
+            # Check overlap with primary region (direct match if on the same chromosome and region)
             if is_overlap(gene_start, gene_end, dup_start, dup_end):
                 overlap_len = overlap_size(gene_start, gene_end, dup_start, dup_end)
                 overlap_region = f"{max(gene_start, dup_start)}-{min(gene_end, dup_end)}"
