@@ -1,4 +1,4 @@
-# Segmental Duplication Lookup Tool
+# Segmental Duplication Overlap Lookup Tool
 
 A Python tool to identify overlaps between gene coordinates and genomic segmental duplications from the UCSC genomicSuperDups database ("Schema for Segmental Dups - Duplications of >1000 Bases of Non-RepeatMasked Sequence," data provided by Ginger Cheng, Xinwei She, Archana Raja, Tin Louie and Evan Eichler).
 
