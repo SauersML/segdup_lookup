@@ -50,9 +50,9 @@ This will:
 - `gene_errors.log`: Any errors encountered during execution
 
 ## Data sources
-Segmental duplications: https://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/genomicSuperDups.txt.gz
-Gene list: https://www.genenames.org/cgi-bin/genegroup/download?id=2054&type=branch
-Gene coordinates: https://rest.ensembl.org/lookup/id/{ensembl_id}?content-type=application/json
+- Segmental duplications: https://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/genomicSuperDups.txt.gz
+- Gene list: https://www.genenames.org/cgi-bin/genegroup/download?id=2054&type=branch
+- Gene coordinates: https://rest.ensembl.org/lookup/id/{ensembl_id}?content-type=application/json
 
 ## Note
 
