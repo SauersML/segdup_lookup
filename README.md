@@ -6,7 +6,7 @@ A Python tool to identify overlaps between gene coordinates and genomic segmenta
 
 Run the program with the following command:
 ```bash
-mkdir segdup_lookup_folder && cd segdup_lookup_folder && git clone https://github.com/ScottSauers/segdup_lookup.git . && python3 main.py
+mkdir segdup_lookup_folder && cd segdup_lookup_folder && git clone https://github.com/SauersML/segdup_lookup.git . && python3 main.py
 ```
 
 ## Overview
@@ -31,7 +31,7 @@ To install the tool, use the following steps:
 ```bash
 mkdir segdup_lookup_folder
 cd segdup_lookup_folder
-git clone https://github.com/ScottSauers/segdup_lookup.git .
+git clone https://github.com/SauersML/segdup_lookup.git .
 ```
 
 ## Usage
